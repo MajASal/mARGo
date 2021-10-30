@@ -1,0 +1,20 @@
+input{
+    width: 30%;
+    padding: 12px 15px;
+    margin: 8px 0px;
+    display: block;
+}
+
+input:focus{
+    background-color: lightblue;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

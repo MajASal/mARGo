@@ -2,13 +2,9 @@ const express = require('express')
 const router = express.Router()
 const geoTile = require('../models/geoTile')
 const assert = require('assert')
-const mongo = require('mongodb')
 const mongoose = require('mongoose')
-const { response } = require('express')
 
-
-
-router.post('/', (requests, response) => {
+/* router.post('/', (requests, response) => {
     console.log(requests.body)
     const data = requests.body
     const userLocation = response.json({
@@ -16,7 +12,7 @@ router.post('/', (requests, response) => {
         latitude: data.lat,
         longitude: data.lons
     })
-})
+}) */
 
 router.get('/getdata/:lat/:long', (req, res) =>{
     var maxDistnace = 1000

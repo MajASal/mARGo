@@ -25,6 +25,10 @@
             fetch('api/insert')
         }; 
 
+        /**this is a different way of retriving the coordinates of a user
+         * uncomment to test it
+         * i used geoapfiy for this function
+         */
        /*  function getLocation(){
             var requestOptions = {
                 method: 'GET',

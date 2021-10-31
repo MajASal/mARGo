@@ -1,8 +1,10 @@
-const { response } = require('express')
+
 const express = require('express')
 const mongoose = require('mongoose')
 const routes = require("./routes/app")
 const app = express()
+
+
 app.listen(3000,() =>{console.log(`now listening for requests at 3000`)})
 app.use(express.static('./public/'))
 app.use(express.json())

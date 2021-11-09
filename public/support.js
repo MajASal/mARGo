@@ -25,6 +25,18 @@
             fetch('api/insert')
         }; 
 
+        function convertToUtM(longitude, latitude) {
+            var destination = new proj4.Proj("+proj=utm +zone=32 +ellps=intl +units=m +no_defs"); // see http://spatialreference.org/ref/epsg/2078/
+            var projection = new proj4.Point(longitude, latitude);   //any object will do as long as it has 'x' and 'y' properties
+            var result = proj4.transform(proj4.WGS84,destination, projection);      //do the transformation.  x and y are modified in place
+            
+            console.log(result)
+            let utm32Lat = Math.round(result.x)
+            console.log(utm32Lat)
+            let utm32Long = Math.round(result.y)
+            console.log(utm32Long)
+        }
+
         /**this is a different way of retriving the coordinates of a user
          * uncomment to test it
          * i used geoapfiy for this function
@@ -46,16 +58,6 @@
         getLocation() */
 
 
-    function convertToUtM(longitude, latitude) {
-    var destination = new proj4.Proj("+proj=utm +zone=32 +ellps=intl +units=m +no_defs"); // see http://spatialreference.org/ref/epsg/2078/
-    var projection = new proj4.Point(longitude, latitude);   //any object will do as long as it has 'x' and 'y' properties
-    var result = proj4.transform(proj4.WGS84,destination, projection);      //do the transformation.  x and y are modified in place
-    
-    console.log(result)
-    let utm32Lat = Math.round(result.x)
-    console.log(utm32Lat)
-    let utm32Long = Math.round(result.y)
-    console.log(utm32Long)
-}
+
 
 

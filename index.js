@@ -1,33 +1,21 @@
-
-const express = require('express')
-const mongoose = require('mongoose')
 const routes = require("./routes/app")
-const app = express()
-
-
-app.listen(3000,() =>{console.log(`now listening for requests at 3000`)})
-app.use(express.static('./public/'))
-app.use(express.json())
+const mongoose = require('mongoose')
 require('dotenv').config()
-
-
+const adminRouter = require('./routes/adminRoute')
+ 
+const express = require('express')
+const app = express()
 app.use('/api', routes)
+app.use('/admin', adminRouter)
 
-//connect DB
-mongoose.connect(
-    process.env.mongoose_URI,
-    { useNewUrlParser: true }, (err, client)=>{
-        if(err){
-            console.log(err) 
-        }
-        else {
-            console.log("Connection to DB is successful...")
-        }
-})
-mongoose.Promise = global.Promise
+const PORT = process.env.PORT || 8080
 
-
-
-
-
-
+const run = async () => {
+    mongoose.connect(process.env.mongoose_URI, {
+      useNewUrlParser: true, useUnifiedTopology: true })
+    app.listen(PORT, () => {
+      console.log(`Example app listening on port ${PORT}!`)
+    })
+  }
+  
+  run()

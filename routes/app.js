@@ -29,7 +29,7 @@ router.get('/getdata/:lat/:long', (req, res) =>{
             }).toArray(function(err, result) {
               if (err) throw err
               console.log(result)
-              console.log((req.params.lat + maxDistnace))
+              res.send('success' + JSON.stringify(result))
               db.close()
             })
           })         
